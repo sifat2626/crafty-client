@@ -11,6 +11,7 @@ function CraftCardItem({
   customization,
   stockStatus,
   type,
+  handleDelete,
 }) {
   return (
     <div className="border-2 rounded-xl p-4">
@@ -40,7 +41,7 @@ function CraftCardItem({
         {type === "user" && (
           <div className="">
             <Link to={`/crafts/update/${id}`}>Update</Link>
-            <button>Delete</button>
+            <button onClick={() => handleDelete(id)}>Delete</button>
           </div>
         )}
       </div>

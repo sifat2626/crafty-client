@@ -2,10 +2,22 @@ import { useContext, useEffect, useState } from "react";
 import Navbar from "../../shared/Navbar/Navbar";
 import { AuthContext } from "../../providers/AuthProvider";
 import CraftCardItem from "../../components/CraftCardItem/CraftCardItem";
+import toast from "react-hot-toast";
 
 function MyArtList() {
   const [crafts, setCrafts] = useState([]);
   const { user } = useContext(AuthContext);
+
+  const handleDelete = (id) => {
+    fetch(`https://crafty-red.vercel.app/api/v1/crafts/${id}`, {
+      method: "DELETE",
+    })
+      .then(() => {
+        const filteredData = crafts.filter((craft) => craft._id !== id);
+        setCrafts(filteredData);
+      })
+      .catch();
+  };
   useEffect(() => {
     fetch("https://crafty-red.vercel.app/api/v1/crafts/user", {
       method: "POST",
@@ -15,7 +27,10 @@ function MyArtList() {
       body: JSON.stringify({ user_email: user.email }),
     })
       .then((res) => res.json())
-      .then((data) => setCrafts(data.data.craft));
+      .then((data) => {
+        setCrafts(data.data.craft);
+        toast.success("Craft Item Deleted");
+      });
   }, [user.email]);
 
   return (
@@ -36,6 +51,7 @@ function MyArtList() {
             short_description={item.short_description}
             item_name={item.item_name}
             type={"user"}
+            handleDelete={handleDelete}
           />
         ))}
       </div>
