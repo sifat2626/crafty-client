@@ -8,7 +8,9 @@ function CraftCardItem({
   subcategory_name,
   price,
   rating,
-  short_description,
+  customization,
+  stockStatus,
+  type,
 }) {
   return (
     <div className="border-2 rounded-xl p-4">
@@ -22,14 +24,25 @@ function CraftCardItem({
       <div className="">
         <h3>{item_name}</h3>
         <h4>{subcategory_name}</h4>
-        <p>{short_description}</p>
         <div className="">
           <p>{rating}</p>
           <p>{price}</p>
         </div>
         <div className="">
-          <Link to={`/details/${id}`}>View Details</Link>
+          <p>{customization}</p>
+          <p>{stockStatus}</p>
         </div>
+        {type === "home" && (
+          <div className="">
+            <Link to={`/details/${id}`}>View Details</Link>
+          </div>
+        )}
+        {type === "user" && (
+          <div className="">
+            <Link to={`/crafts/update/${id}`}>Update</Link>
+            <button>Delete</button>
+          </div>
+        )}
       </div>
     </div>
   );

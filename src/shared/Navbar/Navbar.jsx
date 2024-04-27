@@ -14,7 +14,7 @@ function Navbar({ type }) {
         <NavLink to={"/crafts/create"}>Add Craft Item</NavLink>
       </li>
       <li>
-        <NavLink to={"/"}>My Art&Craft List</NavLink>
+        <NavLink to={"/crafts/user"}>My Art&Craft List</NavLink>
       </li>
       <li>
         <NavLink to={"/login"}>Login</NavLink>

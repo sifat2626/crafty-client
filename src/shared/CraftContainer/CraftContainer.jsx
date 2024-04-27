@@ -25,8 +25,11 @@ function CraftContainer() {
             subcategory_name={item.subcategory_name}
             price={item.price}
             rating={item.rating}
+            customization={item.customization}
+            stockStatus={item.stockStatus}
             short_description={item.short_description}
             item_name={item.item_name}
+            type={"home"}
           />
         ))}
       </div>

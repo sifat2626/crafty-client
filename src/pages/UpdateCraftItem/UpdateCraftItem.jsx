@@ -1,12 +1,13 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "../../shared/Navbar/Navbar";
-import { AuthContext } from "../../providers/AuthProvider";
 import toast from "react-hot-toast";
+import { useLoaderData } from "react-router-dom";
 
-function AddCraftItem() {
+function UpdateCraftItem() {
   const [data, setData] = useState([]);
-  const { user } = useContext(AuthContext);
-  console.log(user);
+  const loadedItem = useLoaderData();
+  const item = loadedItem.data.craft;
+  console.log(item);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,8 +21,6 @@ function AddCraftItem() {
       customization: e.target.customization.value,
       processing_time: e.target.processingTime.value,
       stock_status: e.target.stockStatus.value,
-      user_email: e.target.userEmail.value,
-      user_name: e.target.userName.value,
     };
 
     // Error handling
@@ -33,21 +32,21 @@ function AddCraftItem() {
     }
 
     if (Object.keys(errors).length === 0) {
-      fetch("https://crafty-red.vercel.app/api/v1/crafts", {
-        method: "POST",
+      fetch(`https://crafty-red.vercel.app/api/v1/crafts/${item._id}`, {
+        method: "PUT",
         headers: {
           "Content-type": "application/json",
         },
         body: JSON.stringify(formData),
       })
         .then((res) => {
-          if (res.status !== 201) {
-            throw new Error("Failed to add craft item");
+          if (res.status !== 200) {
+            throw new Error("Failed to update craft item");
           }
           return res.json();
         })
         .then(() => {
-          toast.success("Added Item Successfully!");
+          toast.success("Updated Item Successfully!");
           // Clear the form after successful submission
           e.target.reset();
         })
@@ -74,14 +73,14 @@ function AddCraftItem() {
       <Navbar />
       <div className="container mx-auto py-8">
         <div className="bg-art rounded-lg shadow-md p-8 mx-auto lg:w-3/4 xl:w-1/2">
-          <h1 className="text-3xl font-bold mb-4">Add Craft Item</h1>
+          <h1 className="text-3xl font-bold mb-4">Update Craft Item</h1>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label className="block mb-1">Image URL:</label>
               <input
                 type="url"
                 name="image"
-                required
+                defaultValue={item.image}
                 className="w-full rounded border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 px-4 py-1"
               />
             </div>
@@ -91,7 +90,7 @@ function AddCraftItem() {
               <input
                 type="text"
                 name="itemName"
-                required
+                defaultValue={item.item_name}
                 className="w-full rounded border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 px-4 py-1"
               />
             </div>
@@ -100,10 +99,9 @@ function AddCraftItem() {
               <label className="block mb-1">Subcategory Name:</label>
               <select
                 name="subcategoryName"
-                required
+                defaultValue={item.subcategory_name}
                 className="w-full rounded border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 px-4 py-1"
               >
-                <option value="">Select</option>
                 {categories.map((category, i) => (
                   <option key={i} value={category}>
                     {category}
@@ -116,7 +114,7 @@ function AddCraftItem() {
               <label className="block mb-1">Short Description:</label>
               <textarea
                 name="description"
-                required
+                defaultValue={item.short_description}
                 className="w-full rounded border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 px-4 py-1"
               ></textarea>
             </div>
@@ -126,7 +124,7 @@ function AddCraftItem() {
               <input
                 type="number"
                 name="price"
-                required
+                defaultValue={item.price}
                 className="w-full rounded border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 px-4 py-1"
               />
             </div>
@@ -136,8 +134,8 @@ function AddCraftItem() {
               <input
                 type="number"
                 name="rating"
+                defaultValue={item.rating}
                 step="0.1"
-                required
                 className="w-full rounded border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 px-4 py-1"
               />
             </div>
@@ -146,7 +144,7 @@ function AddCraftItem() {
               <label className="block mb-1">Customization:</label>
               <select
                 name="customization"
-                required
+                defaultValue={item.customization}
                 className="w-full rounded border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 px-4 py-1"
               >
                 <option value="">Select</option>
@@ -159,8 +157,8 @@ function AddCraftItem() {
               <label className="block mb-1">Processing Time:</label>
               <input
                 type="text"
+                defaultValue={item.processing_time}
                 name="processingTime"
-                required
                 className="w-full rounded border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 px-4 py-1"
               />
             </div>
@@ -169,7 +167,7 @@ function AddCraftItem() {
               <label className="block mb-1">Stock Status:</label>
               <select
                 name="stockStatus"
-                required
+                defaultValue={item.stock_status}
                 className="w-full rounded border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 px-4 py-1"
               >
                 <option value="">Select</option>
@@ -178,34 +176,12 @@ function AddCraftItem() {
               </select>
             </div>
 
-            <div>
-              <label className="block mb-1">User Email:</label>
-              <input
-                type="email"
-                name="userEmail"
-                defaultValue={user.email || "anonymous"}
-                className="w-full rounded border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 px-4 py-1"
-                disabled
-              />
-            </div>
-
-            <div>
-              <label className="block mb-1">User Name:</label>
-              <input
-                type="text"
-                name="userName"
-                defaultValue={user.displayName}
-                className="w-full rounded border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 px-4 py-1"
-                disabled
-              />
-            </div>
-
             <div className="flex justify-end">
               <button
                 type="submit"
                 className="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 focus:outline-none focus:bg-indigo-700"
               >
-                Add
+                Update
               </button>
             </div>
           </form>
@@ -215,4 +191,4 @@ function AddCraftItem() {
   );
 }
 
-export default AddCraftItem;
+export default UpdateCraftItem;

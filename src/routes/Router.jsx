@@ -7,6 +7,8 @@ import PrivateRoute from "../routes/PrivateRoute";
 import CraftDetails from "../pages/CraftDetails/CraftDetails";
 import AllCrafts from "../pages/AllCrafts/AllCrafts";
 import AddCraftItem from "../pages/AddCraftItem/AddCraftItem";
+import MyArtList from "../pages/MyArtList/MyArtList";
+import UpdateCraftItem from "../pages/UpdateCraftItem/UpdateCraftItem";
 
 export const router = createBrowserRouter([
   {
@@ -49,6 +51,24 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <AddCraftItem />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/crafts/update/:id",
+        element: (
+          <PrivateRoute>
+            <UpdateCraftItem />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`https://crafty-red.vercel.app/api/v1/crafts/${params.id}`),
+      },
+      {
+        path: "/crafts/user",
+        element: (
+          <PrivateRoute>
+            <MyArtList />
           </PrivateRoute>
         ),
       },
