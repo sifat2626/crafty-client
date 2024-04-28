@@ -27,6 +27,9 @@ function Navbar({ type }) {
       <li>
         <NavLink to={"/crafts/user"}>My Art&Craft List</NavLink>
       </li>
+      <li>
+        <NavLink to={"/categories"}>All Categories</NavLink>
+      </li>
       {!user && (
         <>
           <li>

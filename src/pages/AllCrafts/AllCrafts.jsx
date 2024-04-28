@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import Navbar from "../../shared/Navbar/Navbar";
 
 function AllCrafts() {
@@ -17,6 +17,7 @@ function AllCrafts() {
               <th>Name</th>
               <th>Category</th>
               <th>Price</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -27,6 +28,9 @@ function AllCrafts() {
                 <td>{item.item_name}</td>
                 <td>{item.subcategory_name}</td>
                 <td>{item.price}</td>
+                <td>
+                  <Link to={`/details/${item._id}`}>View Details</Link>
+                </td>
               </tr>
             ))}
           </tbody>
