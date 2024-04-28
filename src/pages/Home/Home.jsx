@@ -1,3 +1,4 @@
+import AllCategories from "../../shared/AllCategories/AllCategories";
 import Banner from "../../shared/Banner/Banner";
 import CraftContainer from "../../shared/CraftContainer/CraftContainer";
 
@@ -6,6 +7,7 @@ function Home() {
     <div>
       <Banner />
       <CraftContainer />
+      <AllCategories />
     </div>
   );
 }

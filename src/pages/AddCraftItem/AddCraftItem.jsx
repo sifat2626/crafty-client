@@ -24,6 +24,10 @@ function AddCraftItem() {
       user_name: e.target.userName.value,
     };
 
+    if (!user.email) {
+      toast.error("An email is required");
+      return;
+    }
     // Error handling
     const errors = {};
     for (const key in formData) {

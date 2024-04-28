@@ -1,7 +1,18 @@
 /* eslint-disable react/prop-types */
-import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
+import toast from "react-hot-toast";
 
 function Navbar({ type }) {
+  const { user, logout } = useContext(AuthContext);
+
+  const handleLogout = () => {
+    logout()
+      .then()
+      .catch((error) => toast.error(error.message));
+  };
+
   const navList = (
     <>
       <li>
@@ -16,12 +27,16 @@ function Navbar({ type }) {
       <li>
         <NavLink to={"/crafts/user"}>My Art&Craft List</NavLink>
       </li>
-      <li>
-        <NavLink to={"/login"}>Login</NavLink>
-      </li>
-      <li>
-        <NavLink to={"/register"}>Register</NavLink>
-      </li>
+      {!user && (
+        <>
+          <li>
+            <NavLink to={"/login"}>Login</NavLink>
+          </li>
+          <li>
+            <NavLink to={"/register"}>Register</NavLink>
+          </li>
+        </>
+      )}
     </>
   );
   return (
@@ -30,7 +45,7 @@ function Navbar({ type }) {
         type === "home" ? "bg-transparent" : "bg-[#FBE7E0]"
       }`}
     >
-      <div className="navbar-start">
+      <div className="navbar-start py-4">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
             <svg
@@ -61,7 +76,38 @@ function Navbar({ type }) {
         <ul className="flex gap-4 ">{navList}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Button</a>
+        {user && (
+          <div className="tooltip" data-tip={user.displayName}>
+            <div className="dropdown dropdown-end">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost btn-circle avatar "
+              >
+                <div className="w-10 rounded-full">
+                  <img
+                    alt="Tailwind CSS Navbar component"
+                    src={user.photoURL}
+                  />
+                </div>
+              </div>
+
+              <ul
+                tabIndex={0}
+                className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+              >
+                <li>
+                  <Link to="/crafts/user" className="justify-between">
+                    My Art&Craft List
+                  </Link>
+                </li>
+                <li>
+                  <button onClick={handleLogout}>Logout</button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -77,6 +77,7 @@ function Register() {
             {...register("name")}
             type="text"
             placeholder="Enter Your Name"
+            required
             className="w-full input input-bordered mt-2 mb-4 text-cozy-green"
           />
           {errors.name && <p className="text-white">{errors.name.message}</p>}
@@ -85,6 +86,7 @@ function Register() {
           <input
             {...register("photoURL")}
             type="text"
+            required
             placeholder="Photo URL"
             className="w-full input input-bordered mt-2 mb-4 text-cozy-green"
           />

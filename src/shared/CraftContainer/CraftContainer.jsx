@@ -2,13 +2,21 @@ import { useEffect, useState } from "react";
 import CraftCardItem from "../../components/CraftCardItem/CraftCardItem";
 
 function CraftContainer() {
+  const [loading, setLoading] = useState(true);
   const [craftItems, setCraftItems] = useState([]);
   useEffect(() => {
     fetch("https://crafty-red.vercel.app/api/v1/crafts")
       .then((res) => res.json())
-      .then((data) => setCraftItems(data.data.craft))
+      .then((data) => {
+        setCraftItems(data.data.craft);
+        setLoading(false);
+      })
       .catch((error) => console.log(error));
   }, []);
+
+  if (loading) {
+    return <span className="loading loading-dots loading-lg"></span>;
+  }
   return (
     <div>
       <h2 className="text-center"> Explore Our Crafted Collections!</h2>

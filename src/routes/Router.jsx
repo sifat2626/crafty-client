@@ -9,11 +9,14 @@ import AllCrafts from "../pages/AllCrafts/AllCrafts";
 import AddCraftItem from "../pages/AddCraftItem/AddCraftItem";
 import MyArtList from "../pages/MyArtList/MyArtList";
 import UpdateCraftItem from "../pages/UpdateCraftItem/UpdateCraftItem";
+import CraftByCategory from "../pages/CraftByCategory/CraftByCategory";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
@@ -71,6 +74,14 @@ export const router = createBrowserRouter([
             <MyArtList />
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/categories/:name",
+        element: <CraftByCategory />,
+        loader: ({ params }) =>
+          fetch(
+            `https://crafty-red.vercel.app/api/v1/categories/${params.name}`
+          ),
       },
     ],
   },
