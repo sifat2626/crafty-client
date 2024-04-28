@@ -8,8 +8,8 @@ function AllCrafts() {
   return (
     <div>
       <Navbar />
-      <div className="overflow-x-auto">
-        <table className="table table-zebra">
+      <div className="overflow-x-auto scale-90 md:scale-100 overflow-hidden">
+        <table className="table table-zebra text-xs md:text-sm ">
           {/* head */}
           <thead>
             <tr>
@@ -23,13 +23,18 @@ function AllCrafts() {
           <tbody>
             {/* row 1 */}
             {items.map((item, i) => (
-              <tr key={item._id}>
-                <th>{i + 1}</th>
+              <tr key={item._id} className="">
+                <th className="">{i + 1}</th>
                 <td>{item.item_name}</td>
                 <td>{item.subcategory_name}</td>
                 <td>{item.price}</td>
                 <td>
-                  <Link to={`/details/${item._id}`}>View Details</Link>
+                  <Link
+                    to={`/details/${item._id}`}
+                    className="bg-blue-500 text-white px-3 py-2 rounded-lg"
+                  >
+                    Details
+                  </Link>
                 </td>
               </tr>
             ))}
