@@ -16,8 +16,8 @@ function AllCategories() {
     return;
   }
   return (
-    <div>
-      <h2>categories: {categories.length}</h2>
+    <div className="mt-16 mb-16">
+      <h2 className="text-3xl text-center font-semibold mb-8">Categories</h2>
       <div className="grid grid=cols-1 md:grid-cols-2 gap-4 gap-y-4">
         {categories.map((category) => (
           <Link

@@ -9,6 +9,7 @@ function MyArtList() {
   const [crafts, setCrafts] = useState([]);
   const [filteredCrafts, setFilteredCrafts] = useState([]);
   const { user } = useContext(AuthContext);
+  const [loader, setLoader] = useState(true);
 
   const handleCustomization = (e) => {
     const value = e.target.value;
@@ -64,43 +65,59 @@ function MyArtList() {
       .then((data) => {
         setCrafts(data.data.craft);
         setFilteredCrafts(data.data.craft); // Initialize filtered crafts with all crafts
+        setLoader(false);
       });
   }, [user.email]);
 
+  if (loader) return "Loading...";
   return (
     <div>
       <Navbar />
-      <h2>My Art & Craft List</h2>
-      <label className="form-control w-full max-w-xs mx-auto">
-        <div className="label">
-          <span className="label-text">Customization?</span>
+      <div className="mt-12">
+        <h2 className="text-center text-4xl font-semibold mb-8">
+          My Art & Craft List
+        </h2>
+        {crafts.length > 0 ? (
+          <label className="form-control w-full max-w-xs mx-auto mb-8">
+            <div className="label">
+              <span className="label-text font-medium text-xl">
+                Customization?
+              </span>
+            </div>
+            <select
+              className="select select-bordered"
+              onChange={(e) => handleCustomization(e)}
+            >
+              <option value="Any">Any</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </label>
+        ) : (
+          <div className="max-w-md mx-auto">
+            <h3 className="text-center bg-red-400 text-white p-2 rounded-lg">
+              Sorry, You haven&apos;t create any art or craft item yet!
+            </h3>
+          </div>
+        )}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-4">
+          {filteredCrafts.map((item) => (
+            <CraftCardItem
+              key={item._id}
+              id={item._id}
+              image={item.image}
+              subcategory_name={item.subcategory_name}
+              price={item.price}
+              rating={item.rating}
+              customization={item.customization}
+              stockStatus={item.stock_status}
+              short_description={item.short_description}
+              item_name={item.item_name}
+              type={"user"}
+              handleDelete={handleDelete}
+            />
+          ))}
         </div>
-        <select
-          className="select select-bordered"
-          onChange={(e) => handleCustomization(e)}
-        >
-          <option value="Any">Any</option>
-          <option value="yes">Yes</option>
-          <option value="no">No</option>
-        </select>
-      </label>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-4">
-        {filteredCrafts.map((item) => (
-          <CraftCardItem
-            key={item._id}
-            id={item._id}
-            image={item.image}
-            subcategory_name={item.subcategory_name}
-            price={item.price}
-            rating={item.rating}
-            customization={item.customization}
-            stockStatus={item.stockStatus}
-            short_description={item.short_description}
-            item_name={item.item_name}
-            type={"user"}
-            handleDelete={handleDelete}
-          />
-        ))}
       </div>
     </div>
   );

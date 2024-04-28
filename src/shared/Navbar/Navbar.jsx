@@ -13,30 +13,66 @@ function Navbar({ type }) {
       .catch((error) => toast.error(error.message));
   };
 
+  const navLinkStyles = ({ isActive }) => {
+    return {
+      color: isActive ? "red" : "",
+    };
+  };
+
+  const className = "font-medium duration-300 block hover:text-red-500";
+
   const navList = (
     <>
       <li>
-        <NavLink to={"/"}>Home</NavLink>
+        <NavLink to={"/"} className={className} style={navLinkStyles}>
+          {({ isActive }) => (
+            <span className={isActive ? "active" : ""}>Home</span>
+          )}
+        </NavLink>
       </li>
       <li>
-        <NavLink to={"/all-crafts"}>All Art & Items</NavLink>
+        <NavLink to={"/all-crafts"} className={className} style={navLinkStyles}>
+          All Art & Items
+        </NavLink>
       </li>
       <li>
-        <NavLink to={"/crafts/create"}>Add Craft Item</NavLink>
+        <NavLink
+          to={"/crafts/create"}
+          className={className}
+          style={navLinkStyles}
+        >
+          Add Craft Item
+        </NavLink>
       </li>
       <li>
-        <NavLink to={"/crafts/user"}>My Art&Craft List</NavLink>
+        <NavLink
+          to={"/crafts/user"}
+          className={className}
+          style={navLinkStyles}
+        >
+          My Art&Craft List
+        </NavLink>
       </li>
       <li>
-        <NavLink to={"/categories"}>All Categories</NavLink>
+        <NavLink to={"/categories"} className={className} style={navLinkStyles}>
+          All Categories
+        </NavLink>
       </li>
       {!user && (
         <>
           <li>
-            <NavLink to={"/login"}>Login</NavLink>
+            <NavLink className={className} to={"/login"} style={navLinkStyles}>
+              Login
+            </NavLink>
           </li>
           <li>
-            <NavLink to={"/register"}>Register</NavLink>
+            <NavLink
+              className={className}
+              to={"/register"}
+              style={navLinkStyles}
+            >
+              Register
+            </NavLink>
           </li>
         </>
       )}
@@ -45,10 +81,10 @@ function Navbar({ type }) {
   return (
     <div
       className={`navbar ${
-        type === "home" ? "bg-transparent" : "bg-[#FBE7E0]"
-      }`}
+        type === "home" ? "md:bg-transparent" : "bg-[#FBE7E0]"
+      }  py-6`}
     >
-      <div className="navbar-start py-4">
+      <div className="navbar-start py-2">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
             <svg
@@ -68,17 +104,19 @@ function Navbar({ type }) {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow rounded-box w-52"
+            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow rounded-box w-52 bg-art"
           >
             {navList}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">ClayZen</a>
+        <Link to={"/"} className="text-3xl font-medium p-2 mx-8">
+          ClayZen
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="flex gap-4 ">{navList}</ul>
       </div>
-      <div className="navbar-end">
+      <div className="navbar-end ">
         {user && (
           <div className="tooltip" data-tip={user.displayName}>
             <div className="dropdown dropdown-end">
@@ -97,7 +135,7 @@ function Navbar({ type }) {
 
               <ul
                 tabIndex={0}
-                className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+                className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52 "
               >
                 <li>
                   <Link to="/crafts/user" className="justify-between">

@@ -11,7 +11,6 @@ import MyArtList from "../pages/MyArtList/MyArtList";
 import UpdateCraftItem from "../pages/UpdateCraftItem/UpdateCraftItem";
 import CraftByCategory from "../pages/CraftByCategory/CraftByCategory";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
-import AllCategories from "../shared/AllCategories/AllCategories";
 import AllCraftCategories from "../pages/AllCraftsCategories/AllCraftCategories";
 
 export const router = createBrowserRouter([

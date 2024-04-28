@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Bar,
   CartesianGrid,
@@ -54,8 +54,10 @@ function Chart() {
 
   if (loading) return;
   return (
-    <div style={{ width: "100%", height: 300 }}>
-      <p>{numOfResults.length}</p>
+    <div
+      style={{ width: "100%", height: 300 }}
+      className="overflow-hidden -ml-8"
+    >
       <ResponsiveContainer>
         <ComposedChart
           width={500}
