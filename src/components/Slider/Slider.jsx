@@ -56,10 +56,10 @@ function Slider() {
         </SwiperSlide>
       ))}
 
-      <div className="btn-next-slide absolute z-10 text-3xl top-1/2 -right-12 group-hover:right-4 duration-300">
+      <div className="btn-next-slide absolute z-10 text-3xl top-1/2 -right-12 group-hover:right-4 duration-300 cursor-pointer">
         <IoIosArrowForward />
       </div>
-      <div className="btn-prev-slide absolute z-10 text-3xl top-1/2 -left-12 group-hover:left-4 duration-300">
+      <div className="btn-prev-slide absolute z-10 text-3xl top-1/2 -left-12 group-hover:left-4 duration-300 cursor-pointer">
         <IoIosArrowBack />
       </div>
     </Swiper>

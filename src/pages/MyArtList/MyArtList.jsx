@@ -3,6 +3,7 @@ import Navbar from "../../shared/Navbar/Navbar";
 import { AuthContext } from "../../providers/AuthProvider";
 import CraftCardItem from "../../components/CraftCardItem/CraftCardItem";
 import toast from "react-hot-toast";
+import Swal from "sweetalert2";
 
 function MyArtList() {
   const [crafts, setCrafts] = useState([]);
@@ -22,16 +23,33 @@ function MyArtList() {
   };
 
   const handleDelete = (id) => {
-    fetch(`https://crafty-red.vercel.app/api/v1/crafts/${id}`, {
-      method: "DELETE",
-    })
-      .then(() => {
-        const filteredData = crafts.filter((craft) => craft._id !== id);
-        setCrafts(filteredData);
-        setFilteredCrafts(filteredData); // Update filtered crafts after deletion
-        toast.success("Craft Item Deleted");
-      })
-      .catch((error) => console.log(error.message));
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`https://crafty-red.vercel.app/api/v1/crafts/${id}`, {
+          method: "DELETE",
+        })
+          .then(() => {
+            const filteredData = crafts.filter((craft) => craft._id !== id);
+            setCrafts(filteredData);
+            setFilteredCrafts(filteredData); // Update filtered crafts after deletion
+            toast.success("Craft Item Deleted");
+          })
+          .catch((error) => console.log(error.message));
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your file has been deleted.",
+          icon: "success",
+        });
+      }
+    });
   };
 
   useEffect(() => {

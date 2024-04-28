@@ -16,7 +16,7 @@ function CraftByCategory() {
         );
         setCategories(filteredCategories);
       });
-  }, []);
+  }, [name]);
   const data = useLoaderData();
   const crafts = data.data.craft;
   return (
