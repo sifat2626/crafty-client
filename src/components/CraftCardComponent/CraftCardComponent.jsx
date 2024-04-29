@@ -17,11 +17,11 @@ function CraftCardComponent({
 }) {
   return (
     <div className="border-2 rounded-xl p-4">
-      <div className="">
+      <div className="overflow-hidden rounded-lg">
         <img
           src={image}
           alt=""
-          className="h-72 w-full object-center object-cover rounded-xl"
+          className="h-72 w-full object-center object-cover rounded-xl hover:scale-[120%] duration-300"
         />
       </div>
       <div className="mt-4">

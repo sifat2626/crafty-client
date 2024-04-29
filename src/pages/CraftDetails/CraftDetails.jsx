@@ -37,11 +37,11 @@ function CraftDetails() {
     <div>
       <Navbar />
       <div className="grid md:grid-cols-2 mt-8 gap-8">
-        <div className="col-span-1">
+        <div className="col-span-1 overflow-hidden rounded-lg">
           <img
             src={image}
             alt=""
-            className="h-[420px] w-full object-cover object-center rounded-lg"
+            className="h-[420px] w-full object-cover object-center rounded-lg hover:scale-[120%] duration-300"
           />
         </div>
         <div className="col-span-1 p-4 bg-art rounded-lg">

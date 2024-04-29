@@ -26,7 +26,13 @@ function AllCategories() {
             to={`/categories/${category.subcategory_name}`}
           >
             <div className="">
-              <img src={category.image} alt="" className="h-56 w-full" />
+              <div className="overflow-hidden rounded-lg">
+                <img
+                  src={category.image}
+                  alt=""
+                  className="h-56 w-full rounded-lg hover:scale-125 duration-300 object-cover object-center"
+                />
+              </div>
               <h3 className="text-2xl font-medium mt-4 text-center">
                 {category.subcategory_name}
               </h3>
