@@ -19,7 +19,9 @@ function Navbar({ type }) {
     };
   };
 
-  const className = "font-medium duration-300 block hover:text-red-500";
+  const className = `font-medium duration-300 block hover:text-red-500 ${
+    type !== "home" ? "dark:text-white/80" : "dark:text-black/80"
+  }`;
 
   const navList = (
     <>
@@ -81,10 +83,10 @@ function Navbar({ type }) {
   return (
     <div
       className={`navbar ${
-        type === "home" ? "md:bg-transparent" : "bg-[#FBE7E0]"
-      }  py-6`}
+        type === "home" ? "md:bg-transparent" : "bg-art-light dark:bg-art-dark "
+      }  py-6 `}
     >
-      <div className="navbar-start py-2">
+      <div className="navbar-start py-2 ">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
             <svg
@@ -109,7 +111,12 @@ function Navbar({ type }) {
             {navList}
           </ul>
         </div>
-        <Link to={"/"} className="text-3xl font-medium p-2 mx-8">
+        <Link
+          to={"/"}
+          className={`text-3xl font-medium p-2 mx-8 ${
+            type === "home" ? "dark:text-black/80" : "dark:text-white/80"
+          }`}
+        >
           ClayZen
         </Link>
       </div>

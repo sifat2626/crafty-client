@@ -48,7 +48,7 @@ function Slider() {
       className="mySwiper relative group"
     >
       {slider.map((slide, i) => (
-        <SwiperSlide key={i} className="">
+        <SwiperSlide key={i} className="text-black/80">
           <img
             src={slide.image_url}
             alt=""
