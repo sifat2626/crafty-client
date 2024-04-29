@@ -46,7 +46,9 @@ function AddCraftItem() {
       })
         .then((res) => {
           if (res.status !== 201) {
-            throw new Error("Failed to add craft item");
+            throw new Error(
+              "Use an unique item name & rating should be from 0 to 5"
+            );
           }
           return res.json();
         })
@@ -57,7 +59,9 @@ function AddCraftItem() {
         })
         .catch((error) => {
           console.error("Error adding craft item:", error);
-          toast.error("Failed to add craft item");
+          toast.error(
+            "Use an unique item name & rating should be between 0 to 5"
+          );
         });
     } else {
       toast.error("Form submission error:", errors);
@@ -162,7 +166,7 @@ function AddCraftItem() {
             <div>
               <label className="block mb-1">Processing Time:</label>
               <input
-                type="text"
+                type="number"
                 name="processingTime"
                 required
                 className="w-full rounded border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 px-4 py-1"

@@ -96,7 +96,7 @@ function MyArtList() {
         ) : (
           <div className="max-w-md mx-auto">
             <h3 className="text-center bg-red-400 text-white p-2 rounded-lg">
-              Sorry, You haven&apos;t create any art or craft item yet!
+              Sorry, You haven&apos;t created any art or craft item yet!
             </h3>
           </div>
         )}
