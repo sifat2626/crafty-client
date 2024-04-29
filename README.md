@@ -12,6 +12,10 @@ Explore the live ClayZen website [here](https://travel-guru-a9df2.web.app/).
 - **Browse Subcategories**: Easily search for craft items within specific subcategories such as pottery, ceramics, and more.
 - **Restricted Access**: Users can only modify the crafts they created, ensuring privacy and control over their own items.
 - **View All Available Crafts**: Explore all available craft items, but only modify those you've created.
+- **Interactive Typewriter Effect**: Enhance user experience with React Simple Typewriter, adding dynamic text animations.
+- **Stunning Reveal Animations**: Impress users with React Awesome Reveal, showcasing smooth and eye-catching animations.
+- **Smooth Animations**: Enhance visual appeal with AOS (Animate on Scroll) library, providing seamless animations as users scroll through the site.
+- **Secure Authentication**: Utilize Firebase Authentication for secure user authentication.
 
 ## Packages Used:
 
