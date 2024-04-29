@@ -7,7 +7,7 @@ AOS.init();
 
 function Root() {
   return (
-    <div className="max-w-[92%] mx-auto font-rob mt-8 ">
+    <div className="max-w-[90%] mx-auto font-rob mt-8 ">
       <Outlet />
       <Footer />
       <Toaster position="top-right" />

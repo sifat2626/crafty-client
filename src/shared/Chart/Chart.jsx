@@ -54,30 +54,37 @@ function Chart() {
 
   if (loading) return;
   return (
-    <div
-      style={{ width: "100%", height: 300 }}
-      className="overflow-hidden -ml-8"
-    >
-      <ResponsiveContainer>
-        <ComposedChart
-          width={500}
-          height={400}
-          data={chartData}
-          margin={{
-            top: 20,
-            right: 20,
-            bottom: 20,
-            left: 20,
-          }}
-        >
-          <CartesianGrid stroke="#f5f5f5" />
-          <XAxis dataKey="subcategory_name" scale="band" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Bar dataKey="items" barSize={20} fill="#413ea0" />
-        </ComposedChart>
-      </ResponsiveContainer>
+    <div className="">
+      <div className="">
+        <h3 className="text-3xl max-w-sm mx-auto text-center font-medium mb-12">
+          Graphs & Charts
+        </h3>
+      </div>
+      <div
+        style={{ width: "100%", height: 300 }}
+        className="overflow-hidden -ml-8"
+      >
+        <ResponsiveContainer>
+          <ComposedChart
+            width={500}
+            height={400}
+            data={chartData}
+            margin={{
+              top: 20,
+              right: 20,
+              bottom: 20,
+              left: 20,
+            }}
+          >
+            <CartesianGrid stroke="#f5f5f5" />
+            <XAxis dataKey="subcategory_name" scale="band" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Bar dataKey="items" barSize={50} fill="#a014c4" />
+          </ComposedChart>
+        </ResponsiveContainer>
+      </div>
     </div>
   );
 }

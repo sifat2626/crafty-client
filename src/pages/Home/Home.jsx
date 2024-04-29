@@ -10,7 +10,9 @@ function Home() {
       <Banner />
       <CraftContainer />
       <AllCategories />
-      <Chart />
+      <div className="overflow-x-hidden">
+        <Chart />
+      </div>
       <Choose />
     </div>
   );

@@ -22,8 +22,7 @@ function CraftByCategory() {
   return (
     <div>
       <Navbar />
-      <h2>craft by category :{crafts.length}</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-4 mt-16">
         {crafts.map((item) => (
           <CraftCardItem
             key={item._id}
@@ -39,14 +38,14 @@ function CraftByCategory() {
           />
         ))}
       </div>
-      <div className="">
-        <h3>Check Other Categories: </h3>
+      <div className="mt-12 ">
+        <h3 className="mb-8 text-2xl font-medium">Check Other Categories: </h3>
         <div className="grid grid=cols-1 md:grid-cols-2 gap-4 gap-y-4">
           {categories.map((category) => (
             <Link
               className="bg-art p-4 rounded-xl"
               key={category._id}
-              to={`categories/${category.subcategory_name}`}
+              to={`/categories/${category.subcategory_name}`}
             >
               {category.subcategory_name}
             </Link>

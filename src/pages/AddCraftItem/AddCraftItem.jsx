@@ -132,8 +132,9 @@ function AddCraftItem() {
             <div>
               <label className="block mb-1">Price:</label>
               <input
-                type="number"
+                type="text" // Change input type to text
                 name="price"
+                pattern="[0-9]+([.][0-9]+)?" // Use pattern attribute for validation
                 required
                 className="w-full rounded border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 px-4 py-1"
               />
@@ -166,7 +167,7 @@ function AddCraftItem() {
             <div>
               <label className="block mb-1">Processing Time:</label>
               <input
-                type="number"
+                type="text"
                 name="processingTime"
                 required
                 className="w-full rounded border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 px-4 py-1"

@@ -116,7 +116,7 @@ function Navbar({ type }) {
       <div className="navbar-center hidden lg:flex">
         <ul className="flex gap-4 ">{navList}</ul>
       </div>
-      <div className="navbar-end ">
+      <div className="navbar-end lg:mr-8">
         {user && (
           <div className="tooltip" data-tip={user.displayName}>
             <div className="dropdown dropdown-end">

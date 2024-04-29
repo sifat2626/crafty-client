@@ -13,19 +13,22 @@ function AllCategories() {
       });
   }, []);
   if (loading) {
-    return;
+    return "Loading...";
   }
   return (
     <div className="mt-16 mb-16">
       <h2 className="text-3xl text-center font-semibold mb-8">Categories</h2>
-      <div className="grid grid=cols-1 md:grid-cols-2 gap-4 gap-y-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 gap-y-4">
         {categories.map((category) => (
           <Link
             className="bg-art p-4 rounded-xl"
             key={category._id}
-            to={`categories/${category.subcategory_name}`}
+            to={`/categories/${category.subcategory_name}`}
           >
-            {category.subcategory_name}
+            <div className="">
+              <img src={category.image} alt="" className="h-56 w-full" />
+              <h3>{category.subcategory_name}</h3>
+            </div>
           </Link>
         ))}
       </div>
