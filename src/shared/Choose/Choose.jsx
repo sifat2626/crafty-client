@@ -1,3 +1,4 @@
+import { Fade } from "react-awesome-reveal";
 import { FaStar } from "react-icons/fa";
 
 const reviewData = [
@@ -38,11 +39,11 @@ function Choose() {
             />
             <h3 className="text-2xl font-semibold mt-4">{review.user_name}</h3>
             <div className="flex gap-2 text-yellow-500 my-4 text-xl">
-              <FaStar />
-              <FaStar />
-              <FaStar />
-              <FaStar />
-              <FaStar />
+              {[0, 1, 2, 3, 4].map((_, i) => (
+                <Fade duration={300} delay={i * 200 + 500} key={i}>
+                  <FaStar />
+                </Fade>
+              ))}
             </div>
             <p className="max-w-sm font-medium">{review.review_text}</p>
           </div>
