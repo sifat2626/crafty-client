@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import CraftCardItem from "../../components/CraftCardItem/CraftCardItem";
+import { Typewriter } from "react-simple-typewriter";
 
 function CraftContainer() {
   const [loading, setLoading] = useState(true);
@@ -23,10 +24,27 @@ function CraftContainer() {
         {" "}
         Explore Our Crafted Collections!
       </h2>
-      <p className="max-w-6xl mx-auto text-center mb-12">
+      <p className="max-w-6xl mx-auto text-center mb-4">
         Delve into the World of Artistry: Explore Our Exceptional Craft
         Collections, Each Piece a Testament to Creativity and Quality.
       </p>
+      <div className="text-center mb-12 text-xl">
+        <h1>
+          Crafted with{" "}
+          <span style={{ color: "red", fontWeight: "bold" }}>
+            {/* Style will be inherited from the parent element */}
+            <Typewriter
+              words={["creativity", "passion ", "precision"]}
+              loop={5}
+              cursor
+              cursorStyle="_"
+              typeSpeed={70}
+              deleteSpeed={50}
+              delaySpeed={1000}
+            />
+          </span>
+        </h1>
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-4">
         {craftItems.slice(0, 6).map((item) => (
           <CraftCardItem
