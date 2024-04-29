@@ -32,7 +32,7 @@ function Login() {
   return (
     <div>
       <Navbar />
-      <div className="md:w-1/2 mx-auto mt-12 bg-art text-black p-6 rounded-3xl">
+      <div className="md:w-1/2 mx-auto mt-12 bg-art-light dark:bg-purple-800 dark:text-white text-black p-6 rounded-3xl">
         <form onSubmit={handleSubmit(onSubmit)}>
           <label>Email</label>
           <input
@@ -75,7 +75,7 @@ function Login() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="bg-white px-4 py-2 rounded-lg text-cozy-green font-semibold"
+              className="bg-white dark:bg-stone-500 border-2 px-4 py-2 rounded-lg text-cozy-green font-semibold"
             >
               {isSubmitting ? "Submitting..." : "Login"}
             </button>
@@ -85,7 +85,7 @@ function Login() {
               Don&apos;t have an account?{" "}
               <Link
                 to={`/register?state=${location?.state}`}
-                className="underline text-cozy-yellow"
+                className="underline dark:text-purple-200"
                 state={location.state}
                 replace
               >

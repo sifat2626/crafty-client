@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 function Footer() {
   return (
     <div className="mt-16">
-      <footer className="footer footer-center p-10 bg-art text-base-content rounded gap-y-6 ">
+      <footer className="footer footer-center p-10 bg-art-light dark:bg-transparent dark:border-2 dark:border-b-0 text-base-content rounded-t-lg gap-y-6 ">
         <h3 className="text-3xl font-bold">ClayZen</h3>
         <div className="flex gap-2">
           <h4>Contact Us:</h4>{" "}

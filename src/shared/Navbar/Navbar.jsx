@@ -15,7 +15,7 @@ function Navbar({ type }) {
 
   const navLinkStyles = ({ isActive }) => {
     return {
-      color: isActive ? "red" : "",
+      color: isActive ? "tomato" : "",
     };
   };
 
@@ -83,7 +83,9 @@ function Navbar({ type }) {
   return (
     <div
       className={`navbar ${
-        type === "home" ? "md:bg-transparent" : "bg-art-light dark:bg-art-dark "
+        type === "home"
+          ? "md:bg-transparent"
+          : "bg-art-light dark:bg-purple-800 "
       }  py-6 `}
     >
       <div className="navbar-start py-2 ">
@@ -106,7 +108,7 @@ function Navbar({ type }) {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow rounded-box w-52 bg-art"
+            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow rounded-box w-52 bg-art-light dark:bg-purple-800"
           >
             {navList}
           </ul>

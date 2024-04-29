@@ -31,7 +31,7 @@ function CraftContainer() {
       <div className="text-center mb-12 text-xl">
         <h1>
           Crafted with{" "}
-          <span style={{ color: "red", fontWeight: "bold" }}>
+          <span style={{ color: "sienna", fontWeight: "bold" }}>
             {/* Style will be inherited from the parent element */}
             <Typewriter
               words={["creativity", "passion ", "precision"]}

@@ -43,7 +43,7 @@ function CraftByCategory() {
         <div className="grid grid=cols-1 md:grid-cols-2 gap-4 gap-y-4">
           {categories.map((category) => (
             <Link
-              className="bg-art p-4 rounded-xl"
+              className="bg-art-light dark:bg-purple-800 p-4 rounded-xl text-xl font-medium"
               key={category._id}
               to={`/categories/${category.subcategory_name}`}
             >

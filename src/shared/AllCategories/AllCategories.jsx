@@ -21,7 +21,7 @@ function AllCategories() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 gap-y-4">
         {categories.map((category) => (
           <Link
-            className="bg-art p-4 rounded-xl"
+            className="bg-art-light dark:bg-transparent dark:border-2 p-4 rounded-xl"
             key={category._id}
             to={`/categories/${category.subcategory_name}`}
           >

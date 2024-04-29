@@ -72,7 +72,7 @@ function UpdateCraftItem() {
     <div className="min-h-screen">
       <Navbar />
       <div className="container mx-auto py-8">
-        <div className="bg-art rounded-lg shadow-md p-8 mx-auto lg:w-3/4 xl:w-1/2">
+        <div className="bg-art-light dark:bg-purple-800 rounded-lg shadow-md p-8 mx-auto lg:w-3/4 xl:w-1/2">
           <h1 className="text-3xl font-bold mb-4">Update Craft Item</h1>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>

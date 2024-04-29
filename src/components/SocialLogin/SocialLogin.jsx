@@ -28,14 +28,14 @@ function SocialLogin() {
       <div className="flex gap-4">
         <button
           onClick={handleGoogleLogIn}
-          className="flex gap-2 items-center bg-cozy-green px-4 py-2 bg-art font-bold rounded-xl"
+          className="flex gap-2 items-center bg-cozy-green px-4 py-2 bg-art-light border-2 dark:bg-transparent font-bold rounded-xl"
         >
           <FaGoogle />
           <p>Google</p>
         </button>
         <button
           onClick={handleGithubLogIn}
-          className="flex gap-2 items-center bg-cozy-green px-4 py-2 bg-art font-bold rounded-xl"
+          className="flex gap-2 items-center bg-cozy-green px-4 py-2 bg-art-light border-2 dark:bg-transparent font-bold rounded-xl"
         >
           <FaGithub />
           <p>Github</p>
