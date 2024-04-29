@@ -69,7 +69,7 @@ function MyArtList() {
       });
   }, [user.email]);
 
-  if (loader) return "Loading...";
+  if (loader) return <span className="loading loading-dots loading-lg"></span>;
   return (
     <div>
       <Navbar />

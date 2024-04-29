@@ -13,7 +13,7 @@ function AllCategories() {
       });
   }, []);
   if (loading) {
-    return "Loading...";
+    return <span className="loading loading-dots loading-lg"></span>;
   }
   return (
     <div className="mt-16 mb-16">
@@ -27,7 +27,9 @@ function AllCategories() {
           >
             <div className="">
               <img src={category.image} alt="" className="h-56 w-full" />
-              <h3>{category.subcategory_name}</h3>
+              <h3 className="text-2xl font-medium mt-4 text-center">
+                {category.subcategory_name}
+              </h3>
             </div>
           </Link>
         ))}
