@@ -5,16 +5,18 @@ import AOS from "aos";
 import "aos/dist/aos.css"; // You can also use <link> for styles
 import Header from "../shared/Header/Header";
 import { useEffect, useState } from "react";
+import { getLocalTheme, setLocalTheme } from "../utils/localStorage";
 AOS.init();
 
 function Root() {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState(() => getLocalTheme());
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
   }, [theme]);
   const handleThemeSwitch = () => {
     setTheme(theme === "dark" ? "light" : "dark");
+    setLocalTheme();
   };
   return (
     <div
